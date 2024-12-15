@@ -70,3 +70,15 @@ $\therefore s_{worst \ case}(n) \in O(f(n))$, where $f(n)$ is one of the followi
    1. combine same complexity classes
    2. drop non-dominant terms
    3. ignore multiplicative constants
+
+$\therefore \ t_{worst \ case}(n) \in O(f(n))$, where $f(n)$ is one of the following
+| Growth Type   | Function       |
+|---------------|----------------|
+| Constant      | $1$            |
+| Logarithmic   | $\log n$       |
+| Linear        | $n$            |
+| Linearithmic  | $n \log n$     |
+| Quadratic     | $n^2$          |
+| Cubic         | $n^3$          |
+| Exponential   | $2^n$          |
+| Factorial     | $n!$           |
