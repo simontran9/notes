@@ -12,7 +12,7 @@
    2. drop non-dominant terms
    3. ignore multiplicative constants
 
-$\therefore t_{worst \ case}(n) \in O(f(n))$, where $f(n)$ is one of the following
+$\therefore \ t_{worst \ case}(n) \in O(f(n))$, where $f(n)$ is one of the following
 | Growth Type   | Function       |
 |---------------|----------------|
 | Constant      | $1$            |
