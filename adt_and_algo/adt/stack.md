@@ -18,11 +18,17 @@ See dynamic array overview in `list.md`
 
 ### access
 
+return the first element of the backed array via `<backed array>[0]`
+
 ### insertion
 
 ### deletion
 
-## Linked list stack
+## Singly Linked structure stack
+
+### Overview
+
+See singly linked list overview in `list.md`
 
 ### access
 
