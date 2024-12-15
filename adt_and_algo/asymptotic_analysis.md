@@ -24,8 +24,19 @@ $\therefore \ t_{worst \ case}(n) \in O(f(n))$, where $f(n)$ is one of the follo
 | Exponential   | $2^n$          |
 | Factorial     | $n!$           |
 
-### Recursive algorithms (TO DO)
+### Recursive algorithms
 
+1. Come up with a recurrence relation of the following form
+    ```math
+    T(n)= aT(\frac{n}{b})+f(n)
+    ```
+    where
+- $T(n)$: Time complexity for input size $n$.
+- $a$: Number of recursive calls.
+- $b$: Factor by which the problem size is divided.
+- $f(n)$: Time complexity of the work done outside the recursive calls.
+2. Use backward substitution, recursion tree, or Master theorem to solve the recurrence relation
+  
 ## Worst case space complexity
 
 **Remark** Ignore the space used by the input to an algorithm
@@ -52,4 +63,6 @@ $\therefore s_{worst \ case}(n) \in O(f(n))$, where $f(n)$ is one of the followi
 | Exponential   | $2^n$          |
 | Factorial     | $n!$           |
 
-### Recursive algorithms (TO DO)
+### Recursive algorithms
+
+$O(r \cdot c)$, where $r$ is the maximum recursion depth (i.e. how many return statements until you reach the base case), and $c$ is the space per call 
