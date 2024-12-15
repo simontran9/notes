@@ -23,12 +23,16 @@ Return the last element of the backed array via the array syntax.
 
 ### Insertion
 
-1. Dynamically increase the backed dynamic array if it's full.
-2. Add the specified element to the end of the backed array.
+1. Increase the backed array if it's full.
+3. Add the specified element to the end of the backed array.
 
 ### Deletion
 
 If the stack is not empty, remove the last element of the backed array.
+
+### Resizing Strategy
+
+See resizing strategy in `list.md`.
 
 ## Singly Linked Structure Stack
 
@@ -50,3 +54,4 @@ Return the data of the head node.
 
 1. If the stack is not empty, retrieve the data from the head node.
 2. Update the head pointer to the next node.
+3. Unlink the old node from the linked structure.
