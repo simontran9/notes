@@ -9,6 +9,7 @@ Creates a stack of elements, such that the last in is the first out.
 | `size()`              | Returns the number of elements in the stack.                  |
 | `push(element)`       | Adds an element to the top of the stack.                      |
 | `pop()`               | Removes and returns the top element of the stack.             |
+| `top()` | Returns the element at the top of the stack without removing it. |
 
 ## Dynamic Array Stack
 
