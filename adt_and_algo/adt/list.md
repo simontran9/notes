@@ -56,67 +56,92 @@ A growth factor of 1.5 is preferred over 2 as it minimizes memory fragmentation 
 
 ### Overview
 
-A singly linked list consists of nodes where each node contains a data element and a reference (or pointer) to the next node. Additionally, it has a head and usually a tail pointer pointing to the first and last node, respectively.
+A singly linked list consists of nodes where each node contains a data element and a reference (or pointer) to the next node. The list has a head pointing to the first node and typically a tail pointing to the last node.
 
 ### Retrieval
 
-- **Case 1: Index is $0$**
-  Return the data at the head node.
-- **Case 2: Index is $N - 1$**
-  Return the data at the tail node.
-- **Case 3: Anywhere else**
-  Start at the head and iterate through the list until reaching the specified index. Then, return the node's data.
+**Case 1: Index is $0**  
+Return the data at the head node.
+
+**Case 2: Index is $N - 1$**  
+Return the data at the tail node.
+
+**Case 3: Any other valid index**  
+Start at the head and iterate through the list until reaching the specified index. Return the node's data.
 
 ### Update
 
-- **Case 1: Index is $0$ or $N - 1$**
-  Replace the data in the head or tail node as appropriate.
-- **Case 2: Anywhere else**
-  Traverse the list to the specified index, then replace the data in the corresponding node.
+**Case 1: Index is $0$ or $N - 1$**  
+Replace the data in the head or tail node as appropriate.
+
+**Case 2: Any other valid index**  
+Traverse the list to the specified index and update the data in the corresponding node.
 
 ### Insertion
 
-1. If the index is $0$, make the new node the new head.
-2. If the index is $N$, make the new node the new tail.
-3. For any other index, iterate to the node at index $i - 1$, link the new node to the next node, and update the previous node to point to the new node.
+**Case 1: Index is $0$**  
+Create a new node and make it the new head.
+
+**Case 2: Index is $N$**  
+Create a new node and make it the new tail.
+
+**Case 3: Any other valid index**  
+Create a new node, traverse to the node at index $i - 1$, link the new node to the next node, and update the previous node to point to the new node.
 
 ### Deletion
 
-1. If the index is $0$, remove the head node and make the next node the new head. If the list becomes empty, set the tail to `null`.
-2. If the index is $N - 1$, traverse the list to the second-to-last node, set its `next` pointer to `null`, and update the tail to this node.
-3. For any other index, traverse to the node at index $i - 1$, update its `next` pointer to skip the node being removed, and unlink the node being removed from the list
+**Case 1: Index is $0$**  
+Remove the head node and make the next node the new head. If the list becomes empty, set the tail to `null`.
+
+**Case 2: Index is $N - 1$**  
+Traverse the list to the second-to-last node, set its `next` pointer to `null`, and update the tail to this node.
+
+**Case 3: Any other valid index**  
+Traverse to the node at index $i - 1$, update its `next` pointer to skip the node being removed, and unlink the node being removed.
 
 ## Doubly Linked Structure List
 
 ### Overview
 
-- Consists of nodes where each node contains a data element, a reference to the previous node, and a reference to the next node.
-- Typically has a sentinel head and sentinel tail to alleviate certain edge cases.
+A doubly linked list consists of nodes where each node contains a data element, a reference to the previous node, and a reference to the next node. The list typically has a sentinel head and tail to simplify operations at the boundaries.
 
 ### Retrieval
 
-- **Case 1: Index is $0$**
-  Return the data at the head node.
-- **Case 2: Index is $N - 1$**
-  Return the data at the tail node.
-- **Case 3: Anywhere else**
-  If the index is less than $N / 2$, traverse from the head; otherwise, traverse from the tail. Return the data from the node at the specified index.
+**Case 1: Index is $0$**  
+Return the data at the head node.
+
+**Case 2: Index is $N - 1$**  
+Return the data at the tail node.
+
+**Case 3: Any other valid index**  
+If the index is less than $N / 2$, traverse from the head; otherwise, traverse from the tail. Return the node's data.
 
 ### Update
 
-- **Case 1: Index is $0$ or $N - 1$**
-  Replace the data in the head or tail node as appropriate.
-- **Case 2: Anywhere else**
-  Traverse from the closest end (head or tail) to the specified index, then replace the data in the corresponding node.
+**Case 1: Index is $0$ or $N - 1$**  
+Replace the data in the head or tail node as appropriate.
+
+**Case 2: Any other valid index**  
+Traverse from the closest end (head or tail) to the specified index, then update the data in the corresponding node.
 
 ### Insertion
 
-1. If the index is $0$, create a new node, link it as the new head, and update the dummy head's next reference.
-2. If the index is $N$, create a new node, link it as the new tail, and update the dummy tail's previous reference.
-3. For any other index, traverse to the node at index $i - 1$, insert the new node between this node and the next, updating the references of all involved nodes.
+**Case 1: Index is $0$**  
+Create a new node and update the dummy head's `next` pointer and the old head's `prev` pointer to point to it.
+
+**Case 2: Index is $N$**  
+Create a new node and update the dummy tail's `prev` pointer and the old tail's `next` pointer to point to it.
+
+**Case 3: Any other valid index**  
+Traverse to the node at index $i - 1$, insert the new node between this node and the next, and update their `next` and `prev` pointers accordingly.
 
 ### Deletion
 
-1. If the index is $0$, remove the head node by updating the dummy head's next reference to the second node. Adjust the second node's `prev` pointer.
-2. If the index is $N - 1$, remove the tail node by updating the dummy tail's previous reference to the second-to-last node. Adjust this node's `next` pointer.
-3. For any other index, traverse to the node at index $i - 1, update its `next` pointer to skip the node being removed, and adjust the `prev` pointer of the subsequent node.
+**Case 1: Index is $0$**  
+Update the dummy head's `next` pointer to the second node and the second node's `prev` pointer to the dummy head.
+
+**Case 2: Index is $N - 1$**  
+Update the dummy tail's `prev` pointer to the second-to-last node and the second-to-last node's `next` pointer to the dummy tail.
+
+**Case 3: Any other valid index**  
+Traverse to the node at index $i - 1$, update its `next` pointer to skip the node being removed, and update the `prev` pointer of the node following the removed node.
