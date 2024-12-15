@@ -36,7 +36,7 @@ access happens just like an array — we specify an index
 
 ### deletion
 
-## singly linked list
+## singly linked structure list
 
 ## doubly linked structure list
 
