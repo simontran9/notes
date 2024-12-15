@@ -2,36 +2,50 @@
 
 ## Overview
 
-creates a stack of elements, such that the last in, is the first out
+Creates a stack of elements, such that the last in is the first out.
 
 | Operation             | Description                                                    |
 | --------------------- | -------------------------------------------------------------- |
-| `size()`              | Returns the number of elements in the list.                    |
-| `push(element)`          | Retrieves the element at the specified index in the list.      |
-| `pop()`             | Retrieves the first element in the list.                       |
+| `size()`              | Returns the number of elements in the stack.                  |
+| `push(element)`       | Adds an element to the top of the stack.                      |
+| `pop()`               | Removes and returns the top element of the stack.             |
 
-## Dynamic array stack
-
-### Overview
-
-See dynamic array overview in `list.md`
-
-### access
-
-return the first element of the backed array via `<backed array>[0]`
-
-### insertion
-
-### deletion
-
-## Singly Linked structure stack
+## Dynamic Array Stack
 
 ### Overview
 
-See singly linked list overview in `list.md`
+See dynamic array overview in `list.md`.
 
-### access
+### Access
 
-### insertion
+Return the last element of the backed array via the array syntax.
 
-### deletion
+### Insertion
+
+1. Dynamically increase the backed dynamic array if it's full.
+2. Add the specified element to the end of the backed array.
+
+### Deletion
+
+If the stack is not empty, remove the last element of the backed array.
+
+## Singly Linked Structure Stack
+
+### Overview
+
+See singly linked list overview in `list.md`.
+
+### Access
+
+Return the data of the head node.
+
+### Insertion
+
+1. Create a new node containing the specified element.
+2. Set the `next` pointer of the new node to the current head node.
+3. Update the head pointer to the new node.
+
+### Deletion
+
+1. If the stack is not empty, retrieve the data from the head node.
+2. Update the head pointer to the next node.
