@@ -2,6 +2,10 @@
 
 ## Overview
 
+<div align="center">
+  <img width="266" alt="image" src="https://github.com/user-attachments/assets/5630a085-cd1f-4a7e-832d-f5e67983881f" />
+</div>
+
 - elements are ordered linearly and labelled by indices from $0$ to $N - 1$ if we have $N$ elements
 - can grow or shrink freely
 - insertion can occur anywhere, but access, update, and deletion operations must occur within the bounds of valid indices
