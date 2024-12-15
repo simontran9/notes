@@ -36,6 +36,18 @@ $\therefore \ t_{worst \ case}(n) \in O(f(n))$, where $f(n)$ is one of the follo
 - $b$: Factor by which the problem size is divided.
 - $f(n)$: Time complexity of the work done outside the recursive calls.
 2. Use backward substitution, recursion tree, or Master theorem to solve the recurrence relation
+
+$\therefore \ t_{worst \ case}(n) \in O(f(n))$, where $f(n)$ is one of the following
+| Growth Type   | Function       |
+|---------------|----------------|
+| Constant      | $1$            |
+| Logarithmic   | $\log n$       |
+| Linear        | $n$            |
+| Linearithmic  | $n \log n$     |
+| Quadratic     | $n^2$          |
+| Cubic         | $n^3$          |
+| Exponential   | $2^n$          |
+| Factorial     | $n!$           |
   
 ## Worst case space complexity
 
