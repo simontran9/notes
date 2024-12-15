@@ -65,4 +65,8 @@ $\therefore s_{worst \ case}(n) \in O(f(n))$, where $f(n)$ is one of the followi
 
 ### Recursive algorithms
 
-$O(r \cdot c)$, where $r$ is the maximum recursion depth (i.e. how many return statements until you reach the base case), and $c$ is the space per call 
+1. calculate total cost = call stack depth $\cdot$ cost per call
+2. Apply Bachmann-Landau notation simplification rules in order
+   1. combine same complexity classes
+   2. drop non-dominant terms
+   3. ignore multiplicative constants
