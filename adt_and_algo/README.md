@@ -8,7 +8,7 @@
 | stack                     | dynamic array, linked list (singly)                      |
 | queue                     | dynamic circular array, linked list (singly)             |
 | priority queue            | binary heap (max and min)                                |
-| map and set               | hash table, trie                                         |
+| map and set               | hash table (chaining and open addressing), trie          |
 | sorted map and sorted set | AVL tree, red-black tree, in-memory b-tree               |
 | disjoint set              | forest and path compression and union by rank heuristics |
 | graph                     | adjacency list, adjacency matrix                         |
