@@ -57,4 +57,4 @@ Return the data of the head node.
 
 1. Update the head pointer to the next node.
 2. Unlink the old head node from the linked structure.
-3. If the queue becomes empty, set the tail pointer to nil.
+3. If the queue becomes empty, set the tail pointer to `null`.
