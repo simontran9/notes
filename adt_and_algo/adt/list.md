@@ -99,28 +99,28 @@ public class ArrayList<E> implements List<E> {
         return this.size;
     }
 
-    public E get(int index) throws IndexOutOfBoundsException {
+    public E get(int index) {
         if (index >= this.size) {
             throw new IndexOutOfBoundsException();
         }
         return this.data[index];
     }
 
-    public E getFirst() throws IndexOutOfBoundsException {
+    public E getFirst() {
         if (this.size == 0) {
             throw new IndexOutOfBoundsException();
         }
         return this.data[0];
     }
 
-    public E getLast() throws IndexOutOfBoundsException {
+    public E getLast() {
         if (this.size == 0) {
             throw new IndexOutOfBoundsException();
         }
         return this.data[this.size - 1];
     }
 
-    public E set(int index, E element) throws IndexOutOfBoundsException {
+    public E set(int index, E element) {
         if (index < 0 || index >= this.size) {
             throw new IndexOutOfBoundsException();
         }
@@ -151,7 +151,7 @@ public class ArrayList<E> implements List<E> {
         add(this.size, element);
     }
 
-    public E remove(int index) throws IndexOutOfBoundsException {
+    public E remove(int index) {
         if (index >= size) {
             throw new IndexOutOfBoundsException();
         }
@@ -162,14 +162,14 @@ public class ArrayList<E> implements List<E> {
         return oldElement;
     }
 
-    public E removeFirst() throws IndexOutOfBoundsException {
+    public E removeFirst() {
         if (this.size == 0) {
             throw new IndexOutOfBoundsException();
         }
         return remove(0);
     }
 
-    public E removeLast() throws IndexOutOfBoundsException {
+    public E removeLast() {
         if (this.size == 0) {
             throw new IndexOutOfBoundsException();
         }
