@@ -23,6 +23,8 @@
 | `remove_last()`       | Deletes the last element in the list.                          |
 
 ```java
+package com.simontran.adts.list;
+
 public interface List<E> {
     int size();
 
