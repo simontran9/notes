@@ -55,7 +55,6 @@ Return the data of the head node.
 
 ### Deletion
 
-1. If the queue is not empty, retrieve the data from the head node.
-2. Update the head pointer to the next node.
-3. Unlink the old head node from the linked structure.
-4. If the queue becomes empty, set the tail pointer to `null`.
+1. Update the head pointer to the next node.
+2. Unlink the old head node from the linked structure.
+3. If the queue becomes empty, set the tail pointer to nil.
