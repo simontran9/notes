@@ -1,4 +1,4 @@
-# setup
+# Setup
 
 ## Text editor
 
