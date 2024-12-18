@@ -29,9 +29,8 @@ Return the first element of the backing array by accessing the `front` index.
 
 ### Deletion
 
-1. If the queue is not empty, retrieve the element at the `front` index.
-2. Set the `front` index element to `null` to assist garbage collection.
-3. Update the `front` index to `(front + 1) % capacity`.
+1. Set the `front` index element to `null` to assist garbage collection.
+2. Update the `front` index to `(front + 1) % capacity`.
 
 ### Resizing Strategy
 
