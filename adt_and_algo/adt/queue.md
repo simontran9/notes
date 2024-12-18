@@ -23,7 +23,7 @@ Return the first element of the backing array by accessing the `front` index.
 
 ### Insertion
 
-1. If the queue is full, resize the backing array to increase its current capacity.
+1. If the queue is full, resize the backing array by allocating a new array by the growth factor. Copy existing elements in order from `front` to `back`, then, reset the `front` to 0 and `back` to the current size.
 2. Place the new element at the `back` index.
 3. Update the `back` index to `(back + 1) % capacity`.
 
@@ -34,7 +34,7 @@ Return the first element of the backing array by accessing the `front` index.
 
 ### Resizing Strategy
 
-When the backing array is full, allocate a new array by the growth factor. Copy existing elements in order from `front` to `back`. Reset the `front` to 0 and `back` to the current size.
+See resizing strategy in `list.md`
 
 ## Singly Linked Structure Queue
 
