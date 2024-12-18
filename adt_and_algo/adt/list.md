@@ -144,4 +144,4 @@ Update the dummy head's `next` pointer to the second node and the second node's 
 Update the dummy tail's `prev` pointer to the second-to-last node and the second-to-last node's `next` pointer to the dummy tail.
 
 **Case 3: Any other valid index**  
-Traverse to the node at index $i - 1$, update its `next` pointer to skip the node being removed, and update the `prev` pointer of the node following the removed node.
+Traverse to the node at index $i - 1$, update its `next` pointer to skip the node being removed, and update the `prev` pointer of the node following the removed node to point to the node at index $i - 1$.
