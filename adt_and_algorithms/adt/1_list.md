@@ -1,4 +1,4 @@
-# List
+# List ADT
 
 ## Overview
 
@@ -21,34 +21,6 @@
 | `remove(index)`       | Deletes the element at the specified index.                    |
 | `remove_first()`      | Deletes the first element in the list.                         |
 | `remove_last()`       | Deletes the last element in the list.                          |
-
-```java
-package com.simontran.adts.list;
-
-public interface List<E> {
-    int size();
-
-    E get(int index);
-
-    E getFirst();
-
-    E getLast();
-
-    E set(int index, E element);
-
-    void add(int index, E element);
-
-    void addFirst(E element);
-
-    void addLast(E element);
-
-    E remove(int index);
-
-    E removeFirst();
-
-    E removeLast();
-}
-```
 
 ## Dynamic Array List
 
@@ -81,9 +53,7 @@ Update the data at a specified index with the array syntax.
 A growth factor of 1.5 is preferred over 2 as it minimizes memory fragmentation and increases the chances of reusing freed memory for subsequent allocations.
 
 ```java
-package com.simontran.adts.list;
-
-public class ArrayList<E> implements List<E> {
+public class ArrayList<E> {
     private static int INITIAL_CAPACITY = 10;
     private static double GROWTH_FACTOR = 1.5;
 
@@ -231,6 +201,153 @@ Traverse the list to the second-to-last node, set its `next` pointer to `null`, 
 **Case 3: Any other valid index**  
 Traverse to the node at index $i - 1$, update its `next` pointer to skip the node being removed, and unlink the node being removed.
 
+```java
+public class SinglyLinkedList<E> {
+    private static class Node<E> {
+        private E data;
+        private Node<E> next;
+
+        public Node(E data) {
+            this.data = data;
+            this.next = null;
+        }
+    }
+
+    private Node<E> head;
+    private Node<E> tail;
+    private int size;
+
+    public SinglyLinkedList() {
+        this.head = null;
+        this.tail = null;
+        this.size = 0;
+    }
+
+    public int size() {
+        return this.size;
+    }
+
+    public E get(int index) {
+        if (index < 0 || index >= this.size) {
+            throw new IndexOutOfBoundsException();
+        }
+        if (index == 0) {
+            return this.head.data;
+        }
+        if (index == this.size - 1) {
+            return this.tail.data;
+        }
+        return getNode(index).data;
+    }
+
+    public E getFirst() {
+        if (this.head == null) {
+            throw new IndexOutOfBoundsException();
+        }
+        return this.head.data;
+    }
+
+    public E getLast() {
+        if (this.tail == null) {
+            throw new IndexOutOfBoundsException();
+        }
+        return this.tail.data;
+    }
+
+    public E set(int index, E element) {
+        if (index >= this.size) {
+            throw new IndexOutOfBoundsException();
+        }
+        if (index == 0) {
+            E oldElement = this.head.data;
+            this.head.data = element;
+            return oldElement;
+        }
+        if (index == size - 1) {
+            E oldElement = this.tail.data;
+            this.tail.data = element;
+            return oldElement;
+        }
+        Node<E> node = getNode(index);
+        E oldElement = node.data;
+        node.data = element;
+        return oldElement;
+    }
+
+    public void add(int index, E element) {
+        if (index > this.size) {
+            throw new IndexOutOfBoundsException();
+        }
+        Node<E> newNode = new Node<>(element);
+        if (this.size == 0) {
+            this.head = newNode;
+            this.tail = newNode;
+        } else if (index == 0) {
+            newNode.next = this.head;
+            this.head = newNode;
+        } else if (index == this.size) {
+            this.tail.next = newNode;
+            this.tail = newNode;
+        } else {
+            Node<E> prevNode = getNode(index - 1);
+            newNode.next = prevNode.next;
+            prevNode.next = newNode;
+        }
+        this.size += 1;
+    }
+
+    public void addFirst(E element) {
+        add(0, element);
+    }
+
+    public void addLast(E element) {
+        add(this.size, element);
+    }
+
+    public E remove(int index) {
+        if (index >= this.size) {
+            throw new IndexOutOfBoundsException();
+        }
+        Node<E> removeNode;
+        if (index == 0) {
+            removeNode = this.head;
+            this.head = removeNode.next;
+            if (this.size == 1) this.tail = null;
+        } else {
+            Node<E> prevNode = getNode(index - 1);
+            removeNode = prevNode.next;
+            prevNode.next = removeNode.next;
+            if (index == this.size - 1) this.tail = prevNode;
+        }
+        E removedElement = removeNode.data;
+        this.size -= 1;
+        return removedElement;
+    }
+
+    public E removeFirst() {
+        if (this.size == 0) {
+            throw new IndexOutOfBoundsException();
+        }
+        return remove(0);
+    }
+
+    public E removeLast() {
+        if (this.size == 0) {
+            throw new IndexOutOfBoundsException();
+        }
+        return remove(this.size - 1);
+    }
+
+    private Node<E> getNode(int index) {
+        Node<E> current = this.head;
+        for (int i = 0; i < index; i += 1) {
+            current = current.next;
+        }
+        return current;
+    }
+}
+```
+
 ## Doubly Linked Structure List
 
 ### Overview
@@ -277,3 +394,158 @@ Update the dummy tail's `prev` pointer to the second-to-last node and the second
 
 **Case 3: Any other valid index**  
 Traverse to the node at index $i - 1$, update its `next` pointer to skip the node being removed, and update the `prev` pointer of the node following the removed node to point to the node at index $i - 1$.
+
+```java
+public class DoublyLinkedList<E> {
+    private static class Node<E> {
+        private Node<E> prev;
+        private E data;
+        private Node<E> next;
+
+        public Node(E data) {
+            this.prev = null;
+            this.data = data;
+            this.next = null;
+        }
+    }
+
+    private Node<E> dummyHead;
+    private Node<E> dummyTail;
+    private int size;
+
+    public DoublyLinkedList() {
+        this.dummyHead = new Node<>(null);
+        this.dummyTail = new Node<>(null);
+        this.dummyHead.next = this.dummyTail;
+        this.dummyTail.prev = this.dummyHead;
+        this.size = 0;
+    }
+
+    public int size() {
+        return this.size;
+    }
+
+    public E get(int index) {
+        if (index >= this.size) {
+            throw new IndexOutOfBoundsException();
+        }
+        return this.getNode(index).data;
+    }
+
+    public E getFirst() {
+        if (this.size == 0) {
+            throw new IndexOutOfBoundsException();
+        }
+        return this.dummyHead.next.data;
+    }
+
+    public E getLast() {
+        if (this.size == 0) {
+            throw new IndexOutOfBoundsException();
+        }
+        return this.dummyTail.prev.data;
+    }
+
+    public E set(int index, E element) {
+        if (index >= this.size) {
+            throw new IndexOutOfBoundsException();
+        }
+        Node<E> node = this.getNode(index);
+        E oldElement = node.data;
+        node.data = element;
+        return oldElement;
+    }
+
+    public void add(int index, E element) {
+        if (index > this.size) {
+            throw new IndexOutOfBoundsException();
+        }
+        Node<E> newNode = new Node<>(element);
+        Node<E> prevNode;
+        Node<E> nextNode;
+        if (this.size == 0) {
+            prevNode = this.dummyHead;
+            nextNode = this.dummyTail;
+        } else if (index == 0) {
+            prevNode = this.dummyHead;
+            nextNode = this.dummyHead.next;
+        } else if (index == this.size) {
+            prevNode = this.dummyTail.prev;
+            nextNode = this.dummyTail;
+        } else {
+            prevNode = this.getNode(index - 1);
+            nextNode = prevNode.next;
+        }
+        prevNode.next = newNode;
+        nextNode.prev = newNode;
+        newNode.next = nextNode;
+        newNode.prev = prevNode;
+        this.size += 1;
+    }
+
+    public void addFirst(E element) {
+        this.add(0, element);
+    }
+
+    public void addLast(E element) {
+        this.add(this.size, element);
+    }
+
+    public E remove(int index) {
+        if (index >= this.size) {
+            throw new IndexOutOfBoundsException();
+        }
+        Node<E> removeNode;
+        Node<E> prevNode;
+        Node<E> nextNode;
+        if (index == 0) {
+            removeNode = this.dummyHead.next;
+            prevNode = this.dummyHead;
+            nextNode = removeNode.next;
+        } else if (index == this.size - 1) {
+            removeNode = this.dummyTail.prev;
+            prevNode = removeNode.prev;
+            nextNode = this.dummyTail;
+        } else {
+            prevNode = this.getNode(index - 1);
+            removeNode = prevNode.next;
+            nextNode = removeNode.next;
+        }
+        prevNode.next = nextNode;
+        nextNode.prev = prevNode;
+        E removedElement = removeNode.data;
+        this.size -= 1;
+        return removedElement;
+    }
+
+    public E removeFirst() {
+        if (this.size == 0) {
+            throw new IndexOutOfBoundsException();
+        }
+        return this.remove(0);
+    }
+
+    public E removeLast() {
+        if (this.size == 0) {
+            throw new IndexOutOfBoundsException();
+        }
+        return this.remove(this.size - 1);
+    }
+
+    private Node<E> getNode(int index) {
+        Node<E> current;
+        if (index < this.size / 2) {
+            current = this.dummyHead.next;
+            for (int i = 0; i < index; i += 1) {
+                current = current.next;
+            }
+        } else {
+            current = this.dummyTail;
+            for (int i = this.size; i > index; i -= 1) {
+                current = current.prev;
+            }
+        }
+        return current;
+    }
+}
+```
