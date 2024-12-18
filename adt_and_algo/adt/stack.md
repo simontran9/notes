@@ -2,7 +2,7 @@
 
 ## Overview
 
-Creates a stack of elements, such that the last in is the first out.
+A stack of elements, such that the last in is the first out (LIFO).
 
 | Operation             | Description                                                    |
 | --------------------- | -------------------------------------------------------------- |
