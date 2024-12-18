@@ -22,7 +22,7 @@
 | `remove_first()`      | Deletes the first element in the list.                         |
 | `remove_last()`       | Deletes the last element in the list.                          |
 
-```
+```java
 public interface List<E> {
     int size();
 
