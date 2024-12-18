@@ -2,7 +2,7 @@
 
 ## Overview
 
-Creates a queue of elements, such that the first in is the first out (FIFO).
+A queue of elements, such that the first in is the first out (FIFO).
 
 | Operation             | Description                                                    |
 | --------------------- | -------------------------------------------------------------- |
