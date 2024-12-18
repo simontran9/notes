@@ -1,4 +1,6 @@
-# Merge sort
+# Sorting algorithms
+
+## Merge sort
 
 ```java
 public class Mergesort {
