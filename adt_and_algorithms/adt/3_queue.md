@@ -4,12 +4,12 @@
 
 A queue is an abstract data type where elements are ordered in a first in is the first out (FIFO) fashion.
 
-| **Operation**             | **Description**                                                    |
-| --------------------- | -------------------------------------------------------------- |
-| `size()`              | Returns the number of elements in the queue.                  |
-| `enqueue(element)`    | Adds an element to the end of the queue.                      |
-| `dequeue()`           | Removes and returns the front element of the queue.           |
-| `front()`             | Returns the front element without removing it.                |
+| **Operation**      | **Description**                                     |
+| ------------------ | --------------------------------------------------- |
+| `size()`           | Returns the number of elements in the queue.        |
+| `enqueue(element)` | Adds an element to the end of the queue.            |
+| `dequeue()`        | Removes and returns the front element of the queue. |
+| `front()`          | Returns the front element without removing it.      |
 
 ## Circular dynamic array queue
 
@@ -19,11 +19,11 @@ A circular array queue uses a dynamic array that wraps around using a front poin
 
 ### Time complexity
 
-| **Operation**             | **Time complexity**                                                    |
-| --- | --- |
-| Lookup | $O(1)$ |
-| Insertion | $O(1)$ |
-| Deletion |$O(1)$ |
+| **Operation** | **Time complexity** |
+| ------------- | ------------------- |
+| Lookup        | $O(1)$              |
+| Insertion     | $O(1)$              |
+| Deletion      | $O(1)$              |
 
 ### Lookup
 
@@ -32,13 +32,13 @@ Return the first element of the backing array by accessing the `front` index.
 ### Insertion
 
 1. If the queue is full, resize the backing array by allocating a new array by the growth factor. Copy existing elements in order from `front` to `back`, then, reset the `front` to 0 and `back` to the current size.
-2. Place the new element at the `back` index.
-3. Update the `back` index to `(back + 1) % capacity`.
+1. Place the new element at the `back` index.
+1. Update the `back` index to `(back + 1) % capacity`.
 
 ### Deletion
 
 1. Set the `front` index element to `null` to assist garbage collection.
-2. Update the `front` index to `(front + 1) % capacity`.
+1. Update the `front` index to `(front + 1) % capacity`.
 
 ### Resizing Strategy
 
@@ -114,11 +114,11 @@ public class CircularArrayQueue<E> {
 
 See singly linked list overview in `list.md`.
 
-| **Operation**             | **Time complexity**                                                    |
-| --- | --- |
-| Lookup | $O(1)$ |
-| Insertion | $O(1)$ |
-| Deletion |$O(1)$ |
+| **Operation** | **Time complexity** |
+| ------------- | ------------------- |
+| Lookup        | $O(1)$              |
+| Insertion     | $O(1)$              |
+| Deletion      | $O(1)$              |
 
 ### Lookup
 
@@ -127,14 +127,14 @@ Return the data of the head node.
 ### Insertion
 
 1. Create a new node containing the specified element.
-2. Set the `next` pointer of the current tail node to the new node.
-3. Update the tail pointer to the new node.
+1. Set the `next` pointer of the current tail node to the new node.
+1. Update the tail pointer to the new node.
 
 ### Deletion
 
 1. Update the head pointer to the next node.
-2. Unlink the old head node from the linked structure.
-3. If the queue becomes empty, set the tail pointer to `null`.
+1. Unlink the old head node from the linked structure.
+1. If the queue becomes empty, set the tail pointer to `null`.
 
 ### Code
 

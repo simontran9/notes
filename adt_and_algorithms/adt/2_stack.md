@@ -4,12 +4,12 @@
 
 A queue is an abstract data type where elements are ordered in a last in is the first out (LIFO) fashion.
 
-| **Operation**             | **Description**                                                    |
-| --------------------- | -------------------------------------------------------------- |
-| `size()`              | Returns the number of elements in the stack.                  |
-| `push(element)`       | Adds an element to the top of the stack.                      |
-| `pop()`               | Removes and returns the top element of the stack.             |
-| `top()` | Returns the element at the top of the stack without removing it. |
+| **Operation**   | **Description**                                                  |
+| --------------- | ---------------------------------------------------------------- |
+| `size()`        | Returns the number of elements in the stack.                     |
+| `push(element)` | Adds an element to the top of the stack.                         |
+| `pop()`         | Removes and returns the top element of the stack.                |
+| `top()`         | Returns the element at the top of the stack without removing it. |
 
 ## Dynamic array stack
 
@@ -17,11 +17,11 @@ A queue is an abstract data type where elements are ordered in a last in is the 
 
 See dynamic array overview in `list.md`.
 
-| **Operation**             | **Time complexity**                                                    |
-| --- | --- |
-| Lookup | $O(1)$ |
-| Insertion | $O(1)$ |
-| Deletion |$O(1)$ |
+| **Operation** | **Time complexity** |
+| ------------- | ------------------- |
+| Lookup        | $O(1)$              |
+| Insertion     | $O(1)$              |
+| Deletion      | $O(1)$              |
 
 ### Lookup
 
@@ -30,7 +30,7 @@ Return the last element of the backed array via the array syntax.
 ### Insertion
 
 1. Increase the backed array if it's full.
-3. Add the specified element to the end of the backed array.
+1. Add the specified element to the end of the backed array.
 
 ### Deletion
 
@@ -98,11 +98,11 @@ public class ArrayStack<E> {
 
 See singly linked list overview in `list.md`.
 
-| **Operation**             | **Time complexity**                                                    |
-| --- | --- |
-| Lookup | $O(1)$ |
-| Insertion | $O(1)$ |
-| Deletion |$O(1)$ |
+| **Operation** | **Time complexity** |
+| ------------- | ------------------- |
+| Lookup        | $O(1)$              |
+| Insertion     | $O(1)$              |
+| Deletion      | $O(1)$              |
 
 ### Lookup
 
@@ -111,14 +111,14 @@ Return the data of the head node.
 ### Insertion
 
 1. Create a new node containing the specified element.
-2. Set the `next` pointer of the new node to the current head node.
-3. Update the head pointer to the new node.
+1. Set the `next` pointer of the new node to the current head node.
+1. Update the head pointer to the new node.
 
 ### Deletion
 
 1. Update the head pointer to the next node.
-2. Unlink the old node from the linked structure.
-4. If the queue becomes empty, set the tail pointer to `null`.
+1. Unlink the old node from the linked structure.
+1. If the queue becomes empty, set the tail pointer to `null`.
 
 ### Code
 

@@ -21,6 +21,7 @@
 - homebrew git
 - homebrew git credential manager
 - git config setup
+
 ```shell
 git config --global user.name "Simon Tran"
 git config --global user.email simontran192@gmail.com

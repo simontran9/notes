@@ -2,7 +2,7 @@
 
 ## Definition
 
-A list is an abstract data type where elements are ordered consecutively. 
+A list is an abstract data type where elements are ordered consecutively.
 
 Each element is assigned a unique index from $0$ to $N-1$, where $N$ is the total number of elements in the list. They can be added or removed anywhere in the list.
 
@@ -10,7 +10,7 @@ Lists are dynamic, meaning they can grow or shrink as elements are added or remo
 
 ## Operations
 
-| **Operation**             | **Description**                                                    |
+| **Operation**         | **Description**                                                |
 | --------------------- | -------------------------------------------------------------- |
 | `size()`              | Returns the number of elements in the list.                    |
 | `get(index)`          | Retrieves the element at the specified index in the list.      |
@@ -32,11 +32,11 @@ A dynamic array list uses an underlying array to store elements. It dynamically 
 
 ### Time complexity
 
-| **Operation**             | **Time complexity**                                                    |
-| --- | --- |
-| Lookup | $O(1)$ |
-| Insertion | $O(n)$ |
-| Deletion | $O(1)$ at the end, $O(n)$ elsewhere |
+| **Operation** | **Time complexity**                 |
+| ------------- | ----------------------------------- |
+| Lookup        | $O(1)$                              |
+| Insertion     | $O(n)$                              |
+| Deletion      | $O(1)$ at the end, $O(n)$ elsewhere |
 
 ### Lookup
 
@@ -49,14 +49,14 @@ Update the data at a specified index with the array syntax.
 ### Insertion
 
 1. Deny the insertion request if the specified index is less than $0$ or greater than $N$ (current size).
-2. When the array is full, increase its capacity by a factor of the growth factor. Allocate a new array and copy elements from the old array into the new one.
-3. Shift all elements from the specified index onwards one position to the right, then place the new element at the specified index.
+1. When the array is full, increase its capacity by a factor of the growth factor. Allocate a new array and copy elements from the old array into the new one.
+1. Shift all elements from the specified index onwards one position to the right, then place the new element at the specified index.
 
 ### Deletion
 
 1. Deny the deletion request if the index is not between $0$ and $N - 1$.
-2. Shift all elements from the specified index onwards one position to the left.
-3. Set the last element in the array to `null`  
+1. Shift all elements from the specified index onwards one position to the left.
+1. Set the last element in the array to `null`
 
 ### Resizing Strategy
 
@@ -174,51 +174,51 @@ A singly linked list consists of nodes where each node contains a data element a
 
 ### Time complexity
 
-| **Operation**             | **Time complexity**                                                    |
-| --- | --- |
-| Lookup | $O(1)$ at the head or tail, $O(n)$ elsewhere |
-| Insertion | $O(1)$ at the head or tail, $O(n)$ elsewhere  |
-| Deletion | $O(1)$ at the head, $O(n)$ elsewhere |
+| **Operation** | **Time complexity**                          |
+| ------------- | -------------------------------------------- |
+| Lookup        | $O(1)$ at the head or tail, $O(n)$ elsewhere |
+| Insertion     | $O(1)$ at the head or tail, $O(n)$ elsewhere |
+| Deletion      | $O(1)$ at the head, $O(n)$ elsewhere         |
 
 ### Lookup
 
-**Case 1: Index is $0**  
+**Case 1: Index is $0**\
 Return the data at the head node.
 
-**Case 2: Index is $N - 1$**  
+**Case 2: Index is $N - 1$**\
 Return the data at the tail node.
 
-**Case 3: Any other valid index**  
+**Case 3: Any other valid index**\
 Start at the head and iterate through the list until reaching the specified index. Return the node's data.
 
 ### Update
 
-**Case 1: Index is $0$ or $N - 1$**  
+**Case 1: Index is $0$ or $N - 1$**\
 Replace the data in the head or tail node as appropriate.
 
-**Case 2: Any other valid index**  
+**Case 2: Any other valid index**\
 Traverse the list to the specified index and update the data in the corresponding node.
 
 ### Insertion
 
-**Case 1: Index is $0$**  
+**Case 1: Index is $0$**\
 Create a new node and make it the new head.
 
-**Case 2: Index is $N$**  
+**Case 2: Index is $N$**\
 Create a new node and make it the new tail.
 
-**Case 3: Any other valid index**  
+**Case 3: Any other valid index**\
 Create a new node, traverse to the node at index $i - 1$, link the new node to the next node, and update the previous node to point to the new node.
 
 ### Deletion
 
-**Case 1: Index is $0$**  
+**Case 1: Index is $0$**\
 Remove the head node and make the next node the new head. If the list becomes empty, set the tail to `null`.
 
-**Case 2: Index is $N - 1$**  
+**Case 2: Index is $N - 1$**\
 Traverse the list to the second-to-last node, set its `next` pointer to `null`, and update the tail to this node.
 
-**Case 3: Any other valid index**  
+**Case 3: Any other valid index**\
 Traverse to the node at index $i - 1$, update its `next` pointer to skip the node being removed, and unlink the node being removed.
 
 ### Code
@@ -382,51 +382,51 @@ A doubly linked list consists of nodes where each node contains a data element, 
 
 ### Time complexity
 
-| **Operation**             | **Time complexity**                                                    |
-| --- | --- |
-| Lookup | $O(1)$ at the head or tail, $O(n)$ elsewhere |
-| Insertion | $O(1)$ at the head or tail, $O(n)$ elsewhere  |
-| Deletion | $O(1)$ at the head or tail, $O(n)$ elsewhere |
+| **Operation** | **Time complexity**                          |
+| ------------- | -------------------------------------------- |
+| Lookup        | $O(1)$ at the head or tail, $O(n)$ elsewhere |
+| Insertion     | $O(1)$ at the head or tail, $O(n)$ elsewhere |
+| Deletion      | $O(1)$ at the head or tail, $O(n)$ elsewhere |
 
 ### Lookup
 
-**Case 1: Index is $0$**  
+**Case 1: Index is $0$**\
 Return the data at the head node.
 
-**Case 2: Index is $N - 1$**  
+**Case 2: Index is $N - 1$**\
 Return the data at the tail node.
 
-**Case 3: Any other valid index**  
+**Case 3: Any other valid index**\
 If the index is less than $N / 2$, traverse from the head; otherwise, traverse from the tail. Return the node's data.
 
 ### Update
 
-**Case 1: Index is $0$ or $N - 1$**  
+**Case 1: Index is $0$ or $N - 1$**\
 Replace the data in the head or tail node as appropriate.
 
-**Case 2: Any other valid index**  
+**Case 2: Any other valid index**\
 Traverse from the closest end (head or tail) to the specified index, then update the data in the corresponding node.
 
 ### Insertion
 
-**Case 1: Index is $0$**  
+**Case 1: Index is $0$**\
 Create a new node and update the dummy head's `next` pointer and the old head's `prev` pointer to point to it.
 
-**Case 2: Index is $N$**  
+**Case 2: Index is $N$**\
 Create a new node and update the dummy tail's `prev` pointer and the old tail's `next` pointer to point to it.
 
-**Case 3: Any other valid index**  
+**Case 3: Any other valid index**\
 Traverse to the node at index $i - 1$, insert the new node between this node and the next, and update their `next` and `prev` pointers accordingly.
 
 ### Deletion
 
-**Case 1: Index is $0$**  
+**Case 1: Index is $0$**\
 Update the dummy head's `next` pointer to the second node and the second node's `prev` pointer to the dummy head.
 
-**Case 2: Index is $N - 1$**  
+**Case 2: Index is $N - 1$**\
 Update the dummy tail's `prev` pointer to the second-to-last node and the second-to-last node's `next` pointer to the dummy tail.
 
-**Case 3: Any other valid index**  
+**Case 3: Any other valid index**\
 Traverse to the node at index $i - 1$, update its `next` pointer to skip the node being removed, and update the `prev` pointer of the node following the removed node to point to the node at index $i - 1$.
 
 ### Code

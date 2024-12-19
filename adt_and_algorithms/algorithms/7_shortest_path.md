@@ -8,6 +8,6 @@
 
 ## Floyd-Warshall algorithm
 
-## A* algorithm
+## A\* algorithm
 
 ## shortest path in DAG algorithm

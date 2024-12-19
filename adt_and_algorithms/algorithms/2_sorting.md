@@ -10,7 +10,7 @@
 
 ## Merge sort
 
-- Time complexity: $O(n \log n)$
+- Time complexity: $O(n \\log n)$
 - Space complexity: $O(n)$
 
 ```java
@@ -71,7 +71,7 @@ public class Mergesort {
 
 # Quicksort
 
-- Time complexity: $O(n \log n)$
+- Time complexity: $O(n \\log n)$
 - Space complexity: $O(n)$
 
 ```java
@@ -109,4 +109,3 @@ public class QuickSort {
 ```
 
 ## Heapsort
-

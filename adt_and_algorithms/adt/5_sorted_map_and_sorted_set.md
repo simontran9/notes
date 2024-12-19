@@ -5,13 +5,14 @@
 A sorted map and sorted set are abstract data types which extends the map and set abstract data type respectively, where the keys are sorted according to their natural ordering, or a specified ordering by passing in a compare function.
 
 On top of supporting the same operations of a map and a set ADT, a sorted map and a sorted set support the following extended operations:
-| **extended Operation**    | **Description**                                                   |
-|------------------|-------------------------------------------------------------------|
-| ...         | Same operations as map an set                 |
-| `min()`          | Returns the smallest key in the sorted map.       |
-| `max()`          | Returns the largest key in the sorted map.        |
-| `successor(key)` | Finds the key that immediately follows the given key.   |
-| `predecessor(key)`| Finds the key that immediately precedes the given key. |
+
+| **extended Operation** | **Description**                                        |
+| ---------------------- | ------------------------------------------------------ |
+| ...                    | Same operations as map an set                          |
+| `min()`                | Returns the smallest key in the sorted map.            |
+| `max()`                | Returns the largest key in the sorted map.             |
+| `successor(key)`       | Finds the key that immediately follows the given key.  |
+| `predecessor(key)`     | Finds the key that immediately precedes the given key. |
 
 ## AVL tree
 
@@ -1171,32 +1172,37 @@ public class RedBlackTreeSet<K extends Comparable<K>> {
 
 A B-Tree is a rooted tree with the following properties:
 
-**Node**  
+**Node**\
 For some node `x`, it has the following attributes:
+
 - `n`, the number of keys currently stored in node `x`
 - `[keys]`, an array of keys sorted in increasing order.
 - `leaf`, a boolean value that is `true` if `x` is a leaf, and `false` if `x` is an internal node.
 - `[child]`, pointers to `x`'s child nodes
 
-**Node and children count**  
+**Node and children count**\
 For some node with $|keys|$, then $|children| = |keys| + 1$.
 
-**Keys as seperators**  
+**Keys as seperators**\
 The keys in the node separate the ranges of keys stored in its subtrees.
 
-**Leaves and depth**  
+**Leaves and depth**\
 All leaves have the same depth.
 
-**Key lower and upper bound**  
-Every node has a lower and upper bound on the number of keys they can contain, which depends on a number $t \ge 2$ called the minimum degree.
+**Key lower and upper bound**\
+Every node has a lower and upper bound on the number of keys they can contain, which depends on a number $t \\ge 2$ called the minimum degree.
+
 ```math
 t - 1 \le |keys| \le 2t - 1
 ```
+
 and so from the node and children count relationship defined above, then
+
 ```math
 t \le |children| \le 2t
 ```
-However, the root node has no lower bound for the key count or children count, but rather that if the tree is nonempty, it must have at least one key.  
+
+However, the root node has no lower bound for the key count or children count, but rather that if the tree is nonempty, it must have at least one key.
 
 **Remark** We consider a node full when it has exactly $2t - 1$ keys.
 
@@ -1204,15 +1210,13 @@ However, the root node has no lower bound for the key count or children count, b
 
 ### Time complexity
 
-| **Operation**             | **Time complexity**                                                    |
-| --- | --- |
-| lookup | $O(n)$ |
-| insertion | $O(\log n)$ |
-| deletion | $O(\log n)$ |
+| **Operation** | **Time complexity** |
+| ------------- | ------------------- |
+| lookup        | $O(n)$              |
+| insertion     | $O(\\log n)$        |
+| deletion      | $O(\\log n)$        |
 
 ### Lookup
-
-
 
 ### Insertion
 
@@ -1220,13 +1224,12 @@ Insertion occurs only at the leaf nodes. When the leaf node is full, it splits i
 
 ### Deletion
 
-Unlike insertion, deletion can occur at any node — not just at the leaves. 
+Unlike insertion, deletion can occur at any node — not just at the leaves.
 
 - case 1: delete a key where the node has the min key count, then take highest from right sibling, or lowest from left sibling and set it as new seperator,then use the old seperator to fill
 
 - case 2: merge with sibling
 
 - case 3: delete tree that's not in a leaf node
-
 
 ### Code
