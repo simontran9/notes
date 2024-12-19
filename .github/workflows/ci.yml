@@ -16,9 +16,8 @@ jobs:
 
       - name: Install pipx
         run: |
-          sudo apt update
-          sudo apt install pipx
-          pipx ensurepath
+          python3 -m pip install --user pipx
+          python3 -m pipx ensurepath
 
       - name: Install mdformat and plugins
         run: |
@@ -28,3 +27,14 @@ jobs:
       - name: Format Markdown files
         run: |
           mdformat .
+
+      - name: Commit changes if any
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          if [[ -n $(git status --porcelain) ]]; then
+            git add .
+            git commit -m "Apply mdformat formatting"
+            git push
+          else
+            echo "No changes to commit."
