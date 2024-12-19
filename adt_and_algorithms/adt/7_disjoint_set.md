@@ -1,4 +1,4 @@
-# Disjoint set ADT
+# Disjoint set
 
 ## Overview
 

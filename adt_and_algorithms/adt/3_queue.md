@@ -1,10 +1,10 @@
-# Queue ADT
+# Queue
 
 ## Overview
 
-A queue of elements, such that the first in is the first out (FIFO).
+A queue is an abstract data type where elements are ordered in a first in is the first out (FIFO) fashion.
 
-| Operation             | Description                                                    |
+| **Operation**             | **Description**                                                    |
 | --------------------- | -------------------------------------------------------------- |
 | `size()`              | Returns the number of elements in the queue.                  |
 | `enqueue(element)`    | Adds an element to the end of the queue.                      |
@@ -17,7 +17,15 @@ A queue of elements, such that the first in is the first out (FIFO).
 
 A circular array queue uses a dynamic array that wraps around using a front pointer and a back pointer to avoid shifting elements unnecessarily. It efficiently utilizes space by reusing vacated positions as elements are dequeued.
 
-### Access
+### Time complexity
+
+| **Operation**             | **Time complexity**                                                    |
+| --- | --- |
+| Lookup | $O(1)$ |
+| Insertion | $O(1)$ |
+| Deletion |$O(1)$ |
+
+### Lookup
 
 Return the first element of the backing array by accessing the `front` index.
 
@@ -34,7 +42,9 @@ Return the first element of the backing array by accessing the `front` index.
 
 ### Resizing Strategy
 
-See resizing strategy in `list.md`
+See resizing strategy in `list.md`.
+
+### Code
 
 ```java
 import java.util.NoSuchElementException;
@@ -104,7 +114,13 @@ public class CircularArrayQueue<E> {
 
 See singly linked list overview in `list.md`.
 
-### Access
+| **Operation**             | **Time complexity**                                                    |
+| --- | --- |
+| Lookup | $O(1)$ |
+| Insertion | $O(1)$ |
+| Deletion |$O(1)$ |
+
+### Lookup
 
 Return the data of the head node.
 
@@ -120,9 +136,9 @@ Return the data of the head node.
 2. Unlink the old head node from the linked structure.
 3. If the queue becomes empty, set the tail pointer to `null`.
 
-```java
-package com.simontran.adts.queue;
+### Code
 
+```java
 public class SinglyLinkedListQueue<E> {
     private static class Node<T> {
         private T data;

@@ -1,14 +1,16 @@
-# List ADT
+# List
 
-## Overview
+## Definition
 
-- Elements are organized in a sequential, linear order.
-- Each element in the list is assigned a unique index ranging from $0$ to $N-1$, where $N$ is the total number of elements in the list.
-- Lists are dynamic, meaning they can grow or shrink as elements are added or removed.
+A list is an abstract data type where elements are ordered consecutively. 
+
+Each element is assigned a unique index from $0$ to $N-1$, where $N$ is the total number of elements in the list. They can be added or removed anywhere in the list.
+
+Lists are dynamic, meaning they can grow or shrink as elements are added or removed.
 
 ## Operations
 
-| Operation             | Description                                                    |
+| **Operation**             | **Description**                                                    |
 | --------------------- | -------------------------------------------------------------- |
 | `size()`              | Returns the number of elements in the list.                    |
 | `get(index)`          | Retrieves the element at the specified index in the list.      |
@@ -28,7 +30,15 @@
 
 A dynamic array list uses an underlying array to store elements. It dynamically resizes itself when the capacity is exceeded.
 
-### Retrieval
+### Time complexity
+
+| **Operation**             | **Time complexity**                                                    |
+| --- | --- |
+| Lookup | $O(1)$ |
+| Insertion | $O(n)$ |
+| Deletion | $O(1)$ at the end, $O(n)$ elsewhere |
+
+### Lookup
 
 Return the data at a specified index with the array syntax.
 
@@ -51,6 +61,8 @@ Update the data at a specified index with the array syntax.
 ### Resizing Strategy
 
 A growth factor of 1.5 is preferred over 2 as it minimizes memory fragmentation and increases the chances of reusing freed memory for subsequent allocations.
+
+### Code
 
 ```java
 public class ArrayList<E> {
@@ -160,7 +172,15 @@ public class ArrayList<E> {
 
 A singly linked list consists of nodes where each node contains a data element and a reference (or pointer) to the next node. The list has a head pointing to the first node and typically a tail pointing to the last node.
 
-### Retrieval
+### Time complexity
+
+| **Operation**             | **Time complexity**                                                    |
+| --- | --- |
+| Lookup | $O(1)$ at the head or tail, $O(n)$ elsewhere |
+| Insertion | $O(1)$ at the head or tail, $O(n)$ elsewhere  |
+| Deletion | $O(1)$ at the head, $O(n)$ elsewhere |
+
+### Lookup
 
 **Case 1: Index is $0**  
 Return the data at the head node.
@@ -200,6 +220,8 @@ Traverse the list to the second-to-last node, set its `next` pointer to `null`, 
 
 **Case 3: Any other valid index**  
 Traverse to the node at index $i - 1$, update its `next` pointer to skip the node being removed, and unlink the node being removed.
+
+### Code
 
 ```java
 public class SinglyLinkedList<E> {
@@ -312,12 +334,16 @@ public class SinglyLinkedList<E> {
         if (index == 0) {
             removeNode = this.head;
             this.head = removeNode.next;
-            if (this.size == 1) this.tail = null;
+            if (this.size == 1) {
+                this.tail = null;
+            }
         } else {
             Node<E> prevNode = getNode(index - 1);
             removeNode = prevNode.next;
             prevNode.next = removeNode.next;
-            if (index == this.size - 1) this.tail = prevNode;
+            if (index == this.size - 1) {
+                this.tail = prevNode;
+            }
         }
         E removedElement = removeNode.data;
         this.size -= 1;
@@ -354,7 +380,15 @@ public class SinglyLinkedList<E> {
 
 A doubly linked list consists of nodes where each node contains a data element, a reference to the previous node, and a reference to the next node. The list typically has a sentinel head and tail to simplify operations at the boundaries.
 
-### Retrieval
+### Time complexity
+
+| **Operation**             | **Time complexity**                                                    |
+| --- | --- |
+| Lookup | $O(1)$ at the head or tail, $O(n)$ elsewhere |
+| Insertion | $O(1)$ at the head or tail, $O(n)$ elsewhere  |
+| Deletion | $O(1)$ at the head or tail, $O(n)$ elsewhere |
+
+### Lookup
 
 **Case 1: Index is $0$**  
 Return the data at the head node.
@@ -394,6 +428,8 @@ Update the dummy tail's `prev` pointer to the second-to-last node and the second
 
 **Case 3: Any other valid index**  
 Traverse to the node at index $i - 1$, update its `next` pointer to skip the node being removed, and update the `prev` pointer of the node following the removed node to point to the node at index $i - 1$.
+
+### Code
 
 ```java
 public class DoublyLinkedList<E> {
@@ -540,8 +576,8 @@ public class DoublyLinkedList<E> {
                 current = current.next;
             }
         } else {
-            current = this.dummyTail;
-            for (int i = this.size; i > index; i -= 1) {
+            current = this.dummyTail.prev;
+            for (int i = this.size - 1; i > index; i -= 1) {
                 current = current.prev;
             }
         }

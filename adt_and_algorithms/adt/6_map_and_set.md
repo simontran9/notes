@@ -1,4 +1,4 @@
-# Map and set ADT
+# Map and set
 
 ## Overview
 

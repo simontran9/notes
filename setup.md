@@ -9,6 +9,7 @@
 - terminal font 16
 - terminal as tab
 - terminal font 16
+- format on save
 
 ## Language
 
@@ -18,7 +19,7 @@
 ## Version control system
 
 - homebrew git
-- git credential manager
+- homebrew git credential manager
 - git config setup
 ```shell
 git config --global user.name "Simon Tran"
