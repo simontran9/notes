@@ -1,4 +1,4 @@
-name: Markdown Formatting
+name: Markdown formatting
 
 on:
   push:
@@ -6,22 +6,25 @@ on:
       - main
 
 jobs:
-  lint-markdown:
-    name: Lint Markdown Files
+  format-markdown:
+    name: Format Markdown Files
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '16'
-
-      - name: Install markdownlint-cli
-        run: npm install -g markdownlint-cli
-
-      - name: Run markdownlint
+      - name: Install pipx
         run: |
-          markdownlint '**/*.md'
+          sudo apt update
+          sudo apt install pipx
+          pipx ensurepath
+
+      - name: Install mdformat and plugins
+        run: |
+          pipx install mdformat
+          pipx inject mdformat mdformat-gfm mdformat-frontmatter mdformat-footnote mdformat-gfm-alerts
+
+      - name: Format Markdown files
+        run: |
+          mdformat .
